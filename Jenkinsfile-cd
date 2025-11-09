@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'maven-3.9.11'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,7 +15,7 @@ pipeline {
         stage('Download Artifact from CI') {
             steps {
                 copyArtifacts(
-                    projectName: 'item3',   // name of your CI job
+                    projectName: 'item-1',   // name of your CI job
                     selector: lastSuccessful()
                 )
             }
